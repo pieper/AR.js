@@ -3,5 +3,14 @@
                 "sidebar": {
                         "Homepage": "https://github.com/jeromeetienne/ar.js"
                 }
-        }
+        },
+        "plugins": [
+                "edit-link"
+        ],
+        "pluginsConfig": {
+                "edit-link": {
+                        "base": "https://github.com/jeromeetienne/ar.js/tree/master/docs/",
+                        "label": "Edit This Page"
+                }
+        } 
 }
