@@ -311,6 +311,17 @@ You can try live on <a href="https://codepen.io/jeromeetienne/pen/mRqqzb" target
 is at the center of the marker. All the rest is normal a-frame. 
 So if you want to add new objects in the augmented reality, just add it 
 close to the <code>&lt;a-box&gt;</code>.</p>
+<h1 id="how-to-add-arjs-in-your-a-frame">How to add ar.js in your a-frame</h1>
+<p>This is 2 steps only</p>
+<ol>
+<li>Tell ar.js to start a-aframe</li>
+<li>setup the camera to move according to the markers</li>
+</ol>
+<p>So first you include aframe-ar.js, then declare a-scene to 
+add the parameters for artoolkit.</p>
+<ul>
+<li><code>embedded</code></li>
+</ul>
 <ul>
 <li><p>explain the difference with the normal aframe boilerplate</p>
 </li>
@@ -318,15 +329,15 @@ close to the <code>&lt;a-box&gt;</code>.</p>
 those are glitch which are meant to disapear shortly. </p>
 </li>
 </ul>
-<h1 id="explain-personalise-the-3d-content">Explain personalise the 3d content</h1>
-<p>The most asked questions 
-is &quot;how to load my own model ?&quot;</p>
-<ul>
-<li>add a text on top as an alternative personalisation</li>
-<li>Explain how to load a model on top of a marker</li>
-</ul>
-<p><a href="https://aframe.io/docs/0.5.0/introduction/models.html#sidebar" target="_blank">https://aframe.io/docs/0.5.0/introduction/models.html#sidebar</a></p>
-<p>Here is an example of loading a <a href="https://www.khronos.org/gltf" target="_blank">gltf</a> model.</p>
+<h1 id="personalize-your-ar-content">Personalize your AR Content</h1>
+<p>Now we have a basic cube in AR...
+it would be good to personalise AR a bit. </p>
+<p>One of the most asked questions has been &quot;how to load my own model in AR?&quot;
+As said before ar.js controls the displacement of the camera, all the rest
+is classic a-frame. So you can load a model exactly as you would in 
+a-frame. 
+Here is an example of loading a <a href="https://www.khronos.org/gltf" target="_blank">gltf</a> model, just add that in your a-scene.
+For more detail see <a href="https://aframe.io/docs/0.5.0/introduction/models.html#sidebar" target="_blank">a-frame documentation about models</a>.</p>
 <pre><code class="lang-html">    <span class="hljs-comment">&lt;!-- define your gltf asset --&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">a-assets</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">a-asset-item</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;tree&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/path/to/tree.gltf&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a-asset-item</span>&gt;</span>
@@ -334,12 +345,12 @@ is &quot;how to load my own model ?&quot;</p>
     <span class="hljs-comment">&lt;!-- use your gltf model --&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">a-entity</span> <span class="hljs-attr">gltf-model</span>=<span class="hljs-string">&quot;#tree&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a-entity</span>&gt;</span>
 </code></pre>
-<p>How to add a text on top of the marker ?</p>
-<p>Simple just use <a href="https://aframe.io/docs/0.5.0/primitives/a-text.html" target="_blank">a-text</a></p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">a-entity</span>
-<span class="hljs-attr">geometry</span>=<span class="hljs-string">&quot;primitive: plane; width: 4; height: auto&quot;</span>
-<span class="hljs-attr">material</span>=<span class="hljs-string">&quot;color: blue&quot;</span>
-<span class="hljs-attr">text</span>=<span class="hljs-string">&quot;value: This text will be 4 units wide.&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a-entity</span>&gt;</span>
+<p>Another way to easily personalize your AR is to put a text or an image on top.
+To add a text, simply just use <a href="https://aframe.io/docs/0.5.0/primitives/a-text.html" target="_blank">a-text</a> as below.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">a-text</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Hello, World!&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a-text</span>&gt;</span>
+</code></pre>
+<p>To add an image, <a href="https://aframe.io/docs/0.5.0/primitives/a-image.html" target="_blank">a-image</a> is easy. Just paste this in your a-frame scene.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">a-image</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;another-image.png&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a-image</span>&gt;</span>
 </code></pre>
 <h1 id="explain-how-to-setup-your-own-marker">Explain how to setup your own marker</h1>
 <p>We wrote a marker generator to help you build your own markers.</p>
@@ -388,12 +399,6 @@ matrixCodeType: 3x3</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">a-scene</span> <span class="hljs-attr">embedded</span> 
 <span class="hljs-attr">artoolkit</span>=<span class="hljs-string">&apos;sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;&apos;</span>&gt;</span>
 </code></pre>
-<h1 id="how-to-handle-multiple-distinct-markers">How to handle multiple distinct markers</h1>
-<ul>
-<li>link to measure it example</li>
-<li>video of it</li>
-<li>what&apos;s the use</li>
-</ul>
 <h1 id="move-the-camera-or-the-object-">Move the camera or the object ?</h1>
 <ul>
 <li>explain the various mode.</li>
@@ -410,6 +415,34 @@ we move the camera around.</p>
 <li>changeMatrixMode : &apos;modelViewMatrix&apos;</li>
 <li>changeMatrixMode : &apos;cameraTranformMatrix&apos;</li>
 </ul>
+<h1 id="how-to-handle-multiple-distinct-markers">How to handle multiple distinct markers</h1>
+<ul>
+<li>link to measure it example</li>
+<li>video of it</li>
+<li><p>what&apos;s the use</p>
+</li>
+<li><p>e.g. you can see it in this <a href="https://jeromeetienne.github.io/AR.js/aframe/examples/multiple-independent-markers.html" target="_blank">multiple independent markers example</a></p>
+</li>
+</ul>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://aframe.io/releases/0.5.0/aframe.min.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&apos;margin : 0px; overflow: hidden;&apos;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a-scene</span> <span class="hljs-attr">embedded</span> <span class="hljs-attr">artoolkit</span>=<span class="hljs-string">&apos;sourceType: webcam;&apos;</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- handle hiro marker --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a-marker</span> <span class="hljs-attr">preset</span>=<span class="hljs-string">&apos;hiro&apos;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a-box</span> <span class="hljs-attr">position</span>=<span class="hljs-string">&apos;0 0.5 0&apos;</span> <span class="hljs-attr">material</span>=<span class="hljs-string">&apos;color: blue;&apos;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a-box</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a-marker</span>&gt;</span>
+
+        <span class="hljs-comment">&lt;!-- handle barcode marker --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a-marker</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&apos;barcode&apos;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&apos;5&apos;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a-box</span> <span class="hljs-attr">position</span>=<span class="hljs-string">&apos;0 0.5 0&apos;</span> <span class="hljs-attr">material</span>=<span class="hljs-string">&apos;color: pink;&apos;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a-box</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a-marker</span>&gt;</span>
+
+        <span class="hljs-comment">&lt;!-- add a simple camera --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a-entity</span> <span class="hljs-attr">camera</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a-entity</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a-scene</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+</code></pre>
 
                                 
                                 </section>
@@ -453,7 +486,7 @@ we move the camera around.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"post-XX-how-to-use-arjs-with-aframe","level":"2.1","depth":1,"next":{"title":"post-update","level":"2.2","depth":1,"path":"posts/post-update.md","ref":"posts/post-update.md","articles":[]},"previous":{"title":"FUTURE","level":"1.7","depth":1,"path":"misc/FUTURE.md","ref":"misc/FUTURE.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","github","anchorjs","noembed"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/jeromeetienne/ar.js/"},"search":{},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"noembed":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"edit-link":{"label":"Edit This Page","base":"https://github.com/jeromeetienne/ar.js/tree/master/docs/"},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchorjs":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"Github":"https://github.com/jeromeetienne/ar.js"}},"gitbook":"*","theme-default":{"styles":{"website":"gitbook/gitbook.css"}}},"file":{"path":"posts/post-XX-how-to-use-arjs-with-aframe.md","mtime":"2017-06-28T18:45:10.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-29T12:28:41.793Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"post-XX-how-to-use-arjs-with-aframe","level":"2.1","depth":1,"next":{"title":"post-update","level":"2.2","depth":1,"path":"posts/post-update.md","ref":"posts/post-update.md","articles":[]},"previous":{"title":"FUTURE","level":"1.7","depth":1,"path":"misc/FUTURE.md","ref":"misc/FUTURE.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","github","anchorjs","noembed"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/jeromeetienne/ar.js/"},"search":{},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"noembed":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"edit-link":{"label":"Edit This Page","base":"https://github.com/jeromeetienne/ar.js/tree/master/docs/"},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchorjs":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"Github":"https://github.com/jeromeetienne/ar.js"}},"gitbook":"*","theme-default":{"styles":{"website":"gitbook/gitbook.css"}}},"file":{"path":"posts/post-XX-how-to-use-arjs-with-aframe.md","mtime":"2017-06-29T13:05:14.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-29T13:05:18.695Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
