@@ -1,7 +1,8 @@
-- make multi-marker without page reload
+- TODO add smoother in a-frame!!!
 - port webvr-arbackend
 
 - rename THREEx.ArToolkitContext.getProjectionMatrix into .getArtoolkitProjectMatrix
+- make multi-marker without page reload
 
 ---
   
