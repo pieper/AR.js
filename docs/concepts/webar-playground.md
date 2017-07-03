@@ -1,5 +1,3 @@
-# WebAR Playground
-
 The [webar playground](http://webxr.io/webar-playground) is an easy way
 to create Augmented Reality with a Few Clicks.
 You can create AR directly from your phone.
