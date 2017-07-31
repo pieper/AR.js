@@ -1,3 +1,17 @@
+This repository is a fork of the work of [@jerome_etienne](https://twitter.com/jerome_etienne) with
+a goal of testing medical applications.
+
+
+Open [this image](https://pieper.github.io/AR.js/three.js/examples/arcode.html) on one screen, or print it out.
+
+Go to [this page](https://pieper.github.io/AR.js/three.js/examples/mobile-performance.html) in your phone browser (Chrome on Android).
+
+
+
+---
+From the original:
+
+
 # AR.js - Efficient Augmented Reality for the Web
 
 I am focusing hard on making AR for the web a reality.
