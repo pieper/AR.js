@@ -132,25 +132,29 @@
 	var arWorldRoot = smoothedRoot
 
 	// add a torus knot	
-	var geometry	= new THREE.CubeGeometry(1,1,1);
-	var material	= new THREE.MeshNormalMaterial({
-		transparent : true,
-		opacity: 0.5,
+	var boxgeometry	= new THREE.CubeGeometry(1,1,1);
+	boxgeometry.faces.splice(4,2);
+	var boxmaterial	= new THREE.MeshNormalMaterial({
+		transparent : false,
+		opacity: 1.0,
 		side: THREE.DoubleSide
 	}); 
-	var mesh	= new THREE.Mesh( geometry, material );
-	mesh.position.y	= geometry.parameters.height/2 -2;
-	arWorldRoot.add( mesh );
+	var boxmesh	= new THREE.Mesh( boxgeometry, boxmaterial );
+	boxmesh.position.y	= -boxgeometry.parameters.height/2;
+	var boxy = boxmesh.position.y;
+	arWorldRoot.add( boxmesh );
 	
 	var geometry	= new THREE.TorusKnotGeometry(0.3,0.1,64,16);
 	var material	= new THREE.MeshNormalMaterial(); 
 	var mesh	= new THREE.Mesh( geometry, material );
-	mesh.position.y	= 0.5
+	mesh.position.y	= boxy;
 	arWorldRoot.add( mesh );
-	
+
+  /*
 	onRenderFcts.push(function(){
 		mesh.rotation.x += 0.1
 	})
+  */
 
 	//////////////////////////////////////////////////////////////////////////////////
 	//		render the whole thing on the page
